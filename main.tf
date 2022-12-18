@@ -139,12 +139,16 @@ resource "aws_eip" "getting_public_ip" {
   ]
 }
 
+output "the_public_ip"{ #form 'terraform state show' command to specify
+  value = aws_eip.getting_public_ip.public_ip
+}
+
 #9 Create an instanve and install/enable apache# google:aws terraform instance ubuntu
 resource "aws_instance" "the-server" {
   ami           = "ami-07c2ae35d31367b3e" 
   instance_type = "t2.micro"
   availability_zone = "eu-west-2a" #must be explicitly setted as the subnet. (wont work if they are not in the same data center.)
-  key_name =  "whereispem?"
+  key_name =  "verynewkey" #ssh -i "verynewkey.pem" ubuntu@18.130.125.8 {sudo su to become a root}
 
 
 
