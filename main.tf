@@ -56,7 +56,7 @@ resource "aws_route_table" "the_route_table" {
 resource "aws_subnet" "the_subnet" {
   vpc_id     = aws_vpc.the_vpc.id
   cidr_block = "10.0.1.0/24"
-  availability_zone = "eu-west-2a" #do not really need. 
+  availability_zone = "eu-west-2a" #do not really need. line150
 
   tags = {
     Name = "The Subnet"
@@ -146,7 +146,7 @@ output "the_public_ip"{ #form 'terraform state show' command to specify
 #9 Create an instanve and install/enable apache# google:aws terraform instance ubuntu
 resource "aws_instance" "the-server" {
   ami           = "ami-07c2ae35d31367b3e" 
-  instance_type = "t2.micro"
+  instance_type = "t2.nano"
   availability_zone = "eu-west-2a" #must be explicitly setted as the subnet. (wont work if they are not in the same data center.)
   key_name =  "verynewkey" #ssh -i "verynewkey.pem" ubuntu@18.130.125.8 {sudo su to become a root}
 
